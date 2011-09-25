@@ -6,6 +6,18 @@
       <p><%= f.text_field :title %></p>
     </div>
     <div>
+      <p><%= f.label :abstract %></p>
+      <p><%= f.text_area :abstract %></p>
+    </div>
+    <div>
+      <p><%= f.label :document_type %></p>
+      <p><%= f.text_field :document_type %></p>
+    </div>
+    <div>
+      <p><%= f.label :authors %></p>
+      <p><%= f.text_field :authors %></p>
+    </div>
+    <div>
       <p><%= f.label :document, "Document to deposit" %></p>
       <p><%= f.file_field :document %></p>
     </div>

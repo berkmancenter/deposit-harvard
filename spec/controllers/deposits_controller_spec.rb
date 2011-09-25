@@ -14,6 +14,19 @@ describe DepositsController do
     end
   end
 
+  describe 'GET new' do
+    before :each do
+      @user.first_name = "Test"
+      @user.last_name = "Ing"
+      @user.save
+    end
+
+    it "assigns current user as the default author" do
+      get :new
+      assigns[:deposit].authors.should_not be_empty
+    end
+  end
+
   describe 'POST deposit' do
     it "creates a new resource" do
       post :create, {:deposit => {:title => "Test title", :document => "test_title.doc", :abstract => "Test abstract", :authors => "Imma Author", :document_type => "Thesis"}}

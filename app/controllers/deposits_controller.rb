@@ -4,7 +4,7 @@ class DepositsController < ApplicationController
   end
 
   def new
-    @deposit = current_user.deposits.new
+    @deposit = current_user.deposits.new(:authors => current_user.full_name)
   end
 
   def create
