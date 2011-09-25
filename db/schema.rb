@@ -11,14 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924005743) do
+ActiveRecord::Schema.define(:version => 20110925004758) do
 
   create_table "deposits", :force => true do |t|
-    t.string   "title",      :limit => 500
+    t.string   "title",         :limit => 500
     t.string   "document"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "abstract",      :limit => 1000
+    t.string   "document_type", :limit => 100
+    t.string   "authors",       :limit => 512
   end
 
   create_table "users", :force => true do |t|

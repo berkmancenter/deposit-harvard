@@ -16,6 +16,21 @@ describe Deposit do
       @deposit.should_not be_valid
     end
 
+    it 'should have an abstract' do
+      @deposit.abstract = nil
+      @deposit.should_not be_valid
+    end
+
+    it 'should have a document type' do
+      @deposit.document_type = nil
+      @deposit.should_not be_valid
+    end
+
+    it 'should have authors' do
+      @deposit.authors = nil
+      @deposit.should_not be_valid
+    end
+
     it 'should have a document' do
       @deposit.document.should_not be_nil
     end
