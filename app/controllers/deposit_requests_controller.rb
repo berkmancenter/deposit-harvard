@@ -1,6 +1,8 @@
 class DepositRequestsController < ApplicationController
   def index
     @deposit_requests = current_user.deposit_requests
+    @pending_deposit_requests = @deposit_requests.select {|rq| rq.pending? }
+    @completed_deposit_requests = @deposit_requests.select {|rq| rq.completed? }
   end
 
   def new

@@ -1,31 +1,37 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div id="new-deposit">
+  <h1>Edit your account</h1>
+  <p>Use the form below to provide the required account information.</p>
+</div>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<fieldset>
+  <legend>Account information</legend>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></div>
+  <div><p><%= f.label :first_name %></p>
+  <p><%= f.text_field :first_name %></p></div>
   
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></div>
+  <div><p><%= f.label :last_name %></p>
+  <p><%= f.text_field :last_name %></p></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <div><p><%= f.label :email %></p>
+  <p><%= f.email_field :email %></p></div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></div>
+  <div><p><%= f.label :password %></p>
+  <p><%= f.password_field :password %></p></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div><p><%= f.label :password_confirmation %></p>
+  <p><%= f.password_field :password_confirmation %></p></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+  <div><p><%= f.label :current_password %> <span class="hint">We need your current password to confirm your changes.</span></p>
+  <p><%= f.password_field :current_password %></p></div>
+</fieldset>
 
-  <div><%= f.submit "Update" %></div>
+<div style="padding: 0px 16px 16px 16px;"><%= f.submit "Update" %></div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<div style="padding: 0px 16px 16px 16px;">
+  <h3>Cancel my account</h3>
 
-<p><%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+  <p><%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+</div>

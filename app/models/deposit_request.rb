@@ -17,4 +17,12 @@ class DepositRequest < ActiveRecord::Base
       self.jobs << Delayed::Job.enqueue(DepositJob.new(self.id, repos.to_sym))
     end
   end
+  
+  def pending?
+    jobs.any?
+  end
+  
+  def completed?
+    jobs.empty?
+  end
 end
