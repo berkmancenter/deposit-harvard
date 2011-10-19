@@ -4,7 +4,7 @@ class DepositRequest < ActiveRecord::Base
   has_many :attachments
   accepts_nested_attributes_for :attachments
   
-  has_and_belongs_to_many :jobs, :class_name => "Delayed::Job"
+  has_and_belongs_to_many :jobs, :class_name => "::Delayed::Job"
   
   attr_accessor :repositories
   
@@ -13,6 +13,8 @@ class DepositRequest < ActiveRecord::Base
   after_save :spawn_jobs
   
   def spawn_jobs
-    
+    self.repositories.each do |repos|
+      self.jobs << Delayed::Job.enqueue(DepositJob.new(self.id, repos))
+    end
   end
 end
