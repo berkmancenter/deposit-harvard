@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DepositHarvard</title>
-  <%= stylesheet_link_tag    "application" %>
+  <title>Deposit@Harvard</title>
+  
+  <%= stylesheet_link_tag    "style" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div id="container">
+  <div id="header">
+    <h1>Deposit@Harvard</h1>
+  </div>
+  
+  <div id="content">
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>

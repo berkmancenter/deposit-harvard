@@ -1,26 +1,40 @@
 <h1>New deposit</h1>
 <div>
   <%= form_for @deposit, :html => {:multipart => true} do |f| %>
-    <div>
-      <p><%= f.label :title %></p>
-      <p><%= f.text_field :title %></p>
-    </div>
-    <div>
-      <p><%= f.label :abstract %></p>
-      <p><%= f.text_area :abstract %></p>
-    </div>
-    <div>
-      <p><%= f.label :document_type %></p>
-      <p><%= f.text_field :document_type %></p>
-    </div>
-    <div>
-      <p><%= f.label :authors %></p>
-      <p><%= f.text_field :authors %></p>
-    </div>
-    <div>
-      <p><%= f.label :document, "Document to deposit" %></p>
-      <p><%= f.file_field :document %></p>
-    </div>
+    <fieldset>
+      <legend>Standard information</legend>
+
+      <div>
+        <p><%= f.label :title %></p>
+        <p><%= f.text_field :title %></p>
+      </div>
+      <div>
+        <p><%= f.label :abstract %></p>
+        <p><%= f.text_area :abstract %></p>
+      </div>
+      <div>
+        <p><%= f.label :document_type %></p>
+        <p><%= f.text_field :document_type %></p>
+      </div>
+      <div>
+        <p><%= f.label :authors %></p>
+        <p><%= f.text_field :authors %></p>
+      </div>
+      <div>
+        <p><%= f.label :document, "Document to deposit" %></p>
+        <p><%= f.file_field :document %></p>
+      </div>
+    </fieldset>
+    
+    <fieldset>
+      <legend>Extended metadata</legend>
+      boo
+    </fieldset>
+    
+    <fieldset>
+      <legend>Repository selection</legend>
+    </fieldset>
+
     <div>
       <p><%= f.submit %></p>
     </div>

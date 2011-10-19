@@ -11,17 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110925180708) do
+ActiveRecord::Schema.define(:version => 20111018180947) do
+
+  create_table "attachments", :force => true do |t|
+    t.string   "file"
+    t.integer  "deposit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "deposits", :force => true do |t|
-    t.string   "title",         :limit => 500
+    t.string   "title",            :limit => 500
     t.string   "document"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "abstract",      :limit => 1000
-    t.string   "document_type", :limit => 100
-    t.string   "authors",       :limit => 512
+    t.string   "abstract",         :limit => 1000
+    t.string   "document_type",    :limit => 100
+    t.string   "authors",          :limit => 512
+    t.string   "status_statement"
+    t.datetime "date_available"
+    t.string   "language"
+    t.string   "identifier"
+    t.string   "custodian"
+    t.string   "copyright_holder"
   end
 
   create_table "users", :force => true do |t|

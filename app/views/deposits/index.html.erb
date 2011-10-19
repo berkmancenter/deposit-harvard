@@ -1,4 +1,8 @@
-<h1>Deposit@Harvard</h1>
+<div id="deposit-now">
+<%= link_to "Deposit now!", new_deposit_path %>  
+</div>
+
+<h2>Your Activity</h2>
 <div>
   <% @deposits.each do |deposit| %>
     <div class='deposit'>
