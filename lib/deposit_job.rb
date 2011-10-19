@@ -19,7 +19,8 @@ class DepositJob < Struct.new(:deposit_request_id, :repository)
 
     m.sac_date_available = dr.date_available.strftime("%Y-%m-%dT%H:%M:%S") unless dr.date_available.blank?
 
-    YAML::load(dr.authors).each do |author|
+    # Authors can be a YAMLized array or a single author string.
+    [YAML::load(dr.authors)].flatten.each do |author|
       m.add_creator(author)
     end
 
