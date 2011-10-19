@@ -4,13 +4,22 @@
   <title>Deposit@Harvard</title>
   
   <%= stylesheet_link_tag    "style" %>
-  <%= javascript_include_tag "jquery", "application" %>
+  <%= javascript_include_tag "jquery", "application", "rails" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <div id="container">
   <div id="header">
+    <% if current_user %>
+      <div id="user-info">
+          Welcome back, <strong><%= current_user.full_name %></strong>. &nbsp;&nbsp;
+          <%= link_to 'Deposits', deposit_requests_path %>&nbsp;&nbsp;&nbsp;
+          <%= link_to 'My Account', edit_user_registration_path %>&nbsp;&nbsp;&nbsp;
+          <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+      </div>
+    <% end %>
+    
     <h1>Deposit@Harvard</h1>
   </div>
   

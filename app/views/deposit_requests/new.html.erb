@@ -1,13 +1,21 @@
-<h1>New deposit</h1>
+<div id="new-deposit">
+  <h1>Deposit a new work</h1>
+  <p>Use the form below to provide the required metadata.</p>
+</div>
 
 <% if @deposit_request.errors.any? %>
+<div class="errors">
+  <p>Your submission contains a some errors...
+  <ul>
   <% @deposit_request.errors.each do |attr, error| %>
-    <p><%= attr %> <%= error %></p>
+    <li><%= attr.capitalize %> <%= error %></li>
   <% end %>
+  </ul>
+</div>
 <% end %>
 
 <div>
-  <%= form_for @deposit_request, :html => {:multipart => true} do |f| %>
+  <%= form_for @deposit_request, :html => {:multipart => true, :id => 'deposit-form'} do |f| %>
     <fieldset>
       <legend>Standard information</legend>
 
@@ -27,12 +35,12 @@
       </div>
 
       <div>
-        <p><%= f.label :authors %></p>
+        <p><%= f.label :authors %> <span class="hint">Separate author names with a comma.</span></p>
         <p><%= f.text_field :authors %></p>
       </div>
 
       <div>
-        <p><%= f.label :date_available, "Availability time" %></p>
+        <p><%= f.label :date_available, "Availability time" %>  <span class="hint">When may the repository publish your work?</span></p>
         <p><%= f.datetime_select :date_available %></p>
       </div>
 
@@ -63,7 +71,7 @@
       </div>
       
       <div>
-        <p><%= f.label :identifier %></p>
+        <p><%= f.label :identifier %> <span class="hint">This is rarely used.</span></p></p>
         <p><%= f.text_field :identifier %></p>
       </div>
       
@@ -77,12 +85,12 @@
       <legend>Repository selection</legend>
       
       <% Deposit.repositories.each do |identifier, repos| %>
-        <%= check_box_tag "deposit_request[repositories][]", identifier, true %> <%= repos.config['name'] %>
+        <p class='repository-select'><%= check_box_tag "deposit_request[repositories][]", identifier, true, :class => 'repository-select-checkbox' %> <%= repos.config['name'] %></p>
       <% end %>
     </fieldset>
 
-    <div>
-      <p><%= f.submit %></p>
+    <div class="submit">
+      <p><%= link_to "Deposit into #{Deposit.repositories.length} repositories", "#", :id => 'deposit-button', :class => 'deposit-button green-button' %>&nbsp;&nbsp;or&nbsp;&nbsp;<%= link_to 'Cancel', deposit_requests_path %></p>
     </div>
   <% end %>
 </div>

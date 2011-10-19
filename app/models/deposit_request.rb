@@ -6,8 +6,8 @@ class DepositRequest < ActiveRecord::Base
   
   has_and_belongs_to_many :jobs, :class_name => "::Delayed::Job"
   
-  attr_accessor :repositories
-  
+  serialize :repositories, Array
+    
   validates :title, :abstract, :authors, :repositories, :presence => true
 
   after_save :spawn_jobs
@@ -16,5 +16,13 @@ class DepositRequest < ActiveRecord::Base
     self.repositories.each do |repos|
       self.jobs << Delayed::Job.enqueue(DepositJob.new(self.id, repos.to_sym))
     end
+  end
+  
+  def pending?
+    jobs.any?
+  end
+  
+  def completed?
+    jobs.empty?
   end
 end

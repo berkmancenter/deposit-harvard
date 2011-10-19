@@ -1,14 +1,33 @@
 <div id="deposit-now">
-<%= link_to "Deposit now!", new_deposit_request_path %>  
+  <%= link_to 'Deposit now!', new_deposit_request_path, :class => 'green-button', :id => 'deposit-now-button' %>
+  <p>
+    Click the button at right to get started now &rarr;
+  </p>
 </div>
 
-<h2>Your Activity</h2>
-<div>
-  <% @deposit_requests.each do |deposit_request| %>
+<div id="deposits">
+  <h2>Pending deposits</h2>
+  <% @pending_deposit_requests.each do |deposit_request| %>
     <div class='deposit'>
+      <p class='date'><small>Deposited on: <%= deposit_request.created_at.strftime("%b %d, %Y") %></small></p>
       <h3><%= deposit_request.title %></h3>
-      <p>Deposited to: <%= deposit_request.repositories || "none" %></p>
-      <p><small>Deposited on: <%= deposit_request.created_at.strftime("%b %d, %Y") %></small></p>
+      <div class='abstract'><%= deposit_request.abstract.truncate(160) %></div>
+      <div class="jobs">
+        <%= render_jobs(deposit_request) %>
+      </div>
+    </div>
+  <% end %>
+  
+  <h2>Completed deposits</h2>
+  
+  <% @completed_deposit_requests.each do |deposit_request| %>
+    <div class='deposit completed-deposit'>
+      <p class='date'><small>Deposited on: <%= deposit_request.created_at.strftime("%b %d, %Y") %></small></p>
+      <h3><%= deposit_request.title %></h3>
+      <div class='abstract'><%= deposit_request.abstract.truncate(160) %></div>
+      <div class="jobs">
+        <%= render_jobs(deposit_request) %>
+      </div>
     </div>
   <% end %>
 </div>
