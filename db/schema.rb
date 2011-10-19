@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019062655) do
+ActiveRecord::Schema.define(:version => 20111019142249) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20111019062655) do
     t.string   "identifier"
     t.string   "custodian"
     t.string   "copyright_holder"
+    t.text     "repositories"
   end
 
   create_table "deposit_requests_jobs", :id => false, :force => true do |t|

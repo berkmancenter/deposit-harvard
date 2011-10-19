@@ -6,8 +6,8 @@ class DepositRequest < ActiveRecord::Base
   
   has_and_belongs_to_many :jobs, :class_name => "::Delayed::Job"
   
-  attr_accessor :repositories
-  
+  serialize :repositories, Array
+    
   validates :title, :abstract, :authors, :presence => true
 
   after_save :spawn_jobs

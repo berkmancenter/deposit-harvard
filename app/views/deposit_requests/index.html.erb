@@ -7,7 +7,10 @@
   <% @deposit_requests.each do |deposit_request| %>
     <div class='deposit'>
       <h3><%= deposit_request.title %></h3>
-      <p>Deposited to: <%= deposit_request.repositories || "none" %></p>
+      <p><%= deposit_request.abstract.truncate(75) %></p>
+      <div class="jobs">
+        <%= render_jobs(deposit_request) %>
+      </div>
       <p><small>Deposited on: <%= deposit_request.created_at.strftime("%b %d, %Y") %></small></p>
     </div>
   <% end %>
