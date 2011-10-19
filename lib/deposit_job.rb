@@ -1,9 +1,11 @@
 class DepositJob < Struct.new(:deposit_request_id, :repository)
   def perform
-    depo = Deposit.repositories[:repository]
+    depo = Deposit.repositories[repository]
+    Rails.logger.info("Found depo: #{depo}")
     repo = depo.repository
+    Rails.logger.info("Found repo: #{repo}")
 
-    dr = DepositRequest.find(deposit_id)
+    dr = DepositRequest.find(deposit_request_id)
 
     # Default to METS for now; later we'll add ways to specify
     # or infer other packaging schemes and other repositories.
@@ -28,9 +30,11 @@ class DepositJob < Struct.new(:deposit_request_id, :repository)
 
     m.create_archive
 
-    Logger.info("Pushing archive #{m.archive_filename} to DepositURL #{repo.default_collection.deposit_url}")
+    Rails.logger.info("Pushing archive #{m.archive_filename} to DepositURL #{repo.default_collection.deposit_url}")
 
     depo.post_file(m.archive_filename, repo.default_collection.deposit_url)
+
+    # TODO - remove these once this is all working right
     if false
       File.delete m.metadata_filename
       File.delete m.archive_filename
