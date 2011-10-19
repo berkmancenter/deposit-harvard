@@ -37,8 +37,10 @@
       </div>
 
       <div>
-        <p><%= f.label :attachments, "Documents to deposit" %></p>
-        <p><%= file_field_tag 'deposit_request[attachments_attributes][][file]' %></p>
+        <p><%= f.label :attachments, "Documents to deposit" %> [<span style="font-size: 8pt;"><a href="#" id="add_attachment">Add another</a></span>]</p>
+        <div id="attachments">
+          <p id="attachment"><%= file_field_tag 'deposit_request[attachments_attributes][][file]' %> <span class='remove' style='display:none;'>[<a href="#" class="remove_attachment">remove</a>]</span></p>
+        </div>
       </div>
     </fieldset>
     
