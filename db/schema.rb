@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019041743) do
+ActiveRecord::Schema.define(:version => 20111019044817) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file"
-    t.integer  "deposit_id"
+    t.integer  "deposit_request_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
