@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:arcturo/deposit.git
-  revision: 706096d2f8f3c072fc4ecb5bd35fa2b5d4792a9f
+  revision: 0f150deb114a6948f4b203ead0bff36e6a64f075
   specs:
     deposit (0.0.1)
       activerecord
@@ -138,7 +138,7 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.29)
+    tzinfo (0.3.30)
     unicorn (4.1.1)
       kgio (~> 2.4)
       rack
