@@ -35,7 +35,6 @@ class DepositJob < Struct.new(:deposit_request_id, :repository)
 
     depo.post_file(m.archive_filename, repo.default_collection.deposit_url)
 
-    File.delete m.metadata_filename
-    File.delete m.archive_filename
+    m.clean_up_files!
   end
 end
