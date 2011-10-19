@@ -1,4 +1,11 @@
 <h1>New deposit</h1>
+
+<% if @deposit_request.errors.any? %>
+  <% @deposit_request.errors.each do |attr, error| %>
+    <p><%= attr %> <%= error %></p>
+  <% end %>
+<% end %>
+
 <div>
   <%= form_for @deposit_request, :html => {:multipart => true} do |f| %>
     <fieldset>
@@ -8,31 +15,68 @@
         <p><%= f.label :title %></p>
         <p><%= f.text_field :title %></p>
       </div>
+
       <div>
         <p><%= f.label :abstract %></p>
         <p><%= f.text_area :abstract %></p>
       </div>
+
       <div>
         <p><%= f.label :document_type %></p>
-        <p><%= f.text_field :document_type %></p>
+        <p><%= f.select :document_type, document_type_options %></p>
       </div>
+
       <div>
         <p><%= f.label :authors %></p>
         <p><%= f.text_field :authors %></p>
       </div>
+
       <div>
-        <p><%= f.label :document, "Document to deposit" %></p>
-        <p><%= f.file_field :document %></p>
+        <p><%= f.label :date_available, "Availability time" %></p>
+        <p><%= f.datetime_select :date_available %></p>
+      </div>
+
+      <div>
+        <p><%= f.label :attachments, "Documents to deposit" %></p>
+        <p><%= file_field_tag 'deposit_request[attachments_attributes][][file]' %></p>
       </div>
     </fieldset>
     
     <fieldset>
       <legend>Extended metadata</legend>
-      boo
+      
+      <div>
+        <p><%= f.label :language %></p>
+        <p><%= f.select :language, language_options %></p>
+      </div>
+      
+      <div>
+        <p><%= f.label :status_statement, "Status" %></p>
+        <p><%= f.select :document_type, status_statement_options %></p>
+      </div>
+      
+      <div>
+        <p><%= f.label :copyright_holder %></p>
+        <p><%= f.text_field :copyright_holder %></p>
+      </div>
+      
+      <div>
+        <p><%= f.label :identifier %></p>
+        <p><%= f.text_field :identifier %></p>
+      </div>
+      
+      <div>
+        <p><%= f.label :custodian %></p>
+        <p><%= f.text_field :custodian %></p>
+      </div>
     </fieldset>
     
     <fieldset>
       <legend>Repository selection</legend>
+      
+      <% Deposit.repositories.each do |identifier, repos| %>
+        <%= check_box_tag "deposit_request[repositories][]", identifier, true %> <%= repos.config['name'] %>
+      <% end %>
     </fieldset>
 
     <div>
