@@ -35,10 +35,7 @@ class DepositJob < Struct.new(:deposit_request_id, :repository)
 
     depo.post_file(m.archive_filename, repo.default_collection.deposit_url)
 
-    # TODO - remove these once this is all working right
-    if false
-      File.delete m.metadata_filename
-      File.delete m.archive_filename
-    end
+    File.delete m.metadata_filename
+    File.delete m.archive_filename
   end
 end
