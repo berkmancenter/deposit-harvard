@@ -8,7 +8,7 @@ class DepositRequest < ActiveRecord::Base
   
   serialize :repositories, Array
     
-  validates :title, :abstract, :authors, :presence => true
+  validates :title, :abstract, :authors, :repositories, :presence => true
 
   after_save :spawn_jobs
   
