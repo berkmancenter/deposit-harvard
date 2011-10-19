@@ -1,0 +1,14 @@
+<div id="deposit-now">
+<%= link_to "Deposit now!", new_deposit_request_path %>  
+</div>
+
+<h2>Your Activity</h2>
+<div>
+  <% @deposit_requests.each do |deposit_request| %>
+    <div class='deposit'>
+      <h3><%= deposit_request.title %></h3>
+      <p>Deposited to: <%= deposit_request.repositories || "none" %></p>
+      <p><small>Deposited on: <%= deposit_request.created_at.strftime("%b %d, %Y") %></small></p>
+    </div>
+  <% end %>
+</div>

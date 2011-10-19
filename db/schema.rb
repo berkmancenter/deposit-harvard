@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111018180947) do
+ActiveRecord::Schema.define(:version => 20111019041743) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20111018180947) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
-  create_table "deposits", :force => true do |t|
+  create_table "deposit_requests", :force => true do |t|
     t.string   "title",            :limit => 500
     t.string   "document"
     t.integer  "user_id"

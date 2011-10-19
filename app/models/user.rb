@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  has_many :deposits
+  has_many :deposit_requests
 
   def full_name
     [self.first_name, self.last_name].join(" ").strip

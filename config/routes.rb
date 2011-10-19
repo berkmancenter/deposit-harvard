@@ -1,5 +1,5 @@
 DepositHarvard::Application.routes.draw do
-  resources :deposits
+  resources :deposit_requests
   devise_for :users
-  root :to => 'deposits#index'
+  root :to => 'deposit_requests#index'
 end

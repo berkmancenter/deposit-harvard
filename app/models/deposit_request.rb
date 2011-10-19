@@ -1,4 +1,4 @@
-class Deposit < ActiveRecord::Base
+class DepositRequest < ActiveRecord::Base
   belongs_to :user
   has_many :attachments
   
