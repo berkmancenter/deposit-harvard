@@ -14,7 +14,7 @@ class DepositRequest < ActiveRecord::Base
   
   def spawn_jobs
     self.repositories.each do |repos|
-      self.jobs << Delayed::Job.enqueue(DepositJob.new(self.id, repos))
+      self.jobs << Delayed::Job.enqueue(DepositJob.new(self.id, repos.to_sym))
     end
   end
 end
