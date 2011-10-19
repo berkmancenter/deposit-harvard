@@ -8,7 +8,7 @@ class DepositRequest < ActiveRecord::Base
   
   attr_accessor :repositories
   
-  validates :title, :abstract, :authors, :presence => true
+  validates :title, :abstract, :authors, :repositories, :presence => true
 
   after_save :spawn_jobs
   

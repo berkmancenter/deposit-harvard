@@ -29,7 +29,7 @@ describe DepositRequestsController do
 
   describe 'POST deposit_request' do
     it "creates a new resource" do
-      post :create, {:deposit_request => {:title => "Test title", :document => "test_title.doc", :abstract => "Test abstract", :authors => "Imma Author", :document_type => "Thesis"}}
+      post :create, {:deposit_request => {:title => "Test title", :document => "test_title.doc", :abstract => "Test abstract", :authors => "Imma Author", :document_type => "Thesis", :repositories => [:test_repo]}}
       response.should redirect_to(:action => "index")
     end
 
