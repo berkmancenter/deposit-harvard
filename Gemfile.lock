@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:arcturo/deposit.git
-  revision: e50be1d5556ba92088f083ae59d40b3ec3de7085
+  revision: 917e2a653b48e9822617647319f01539e0537acb
   specs:
     deposit (0.0.1)
       activerecord
