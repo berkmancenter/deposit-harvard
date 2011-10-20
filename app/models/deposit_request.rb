@@ -10,7 +10,7 @@ class DepositRequest < ActiveRecord::Base
     
   validates :title, :abstract, :authors, :repositories, :presence => true
 
-  after_save :spawn_jobs
+  after_create :spawn_jobs
   
   def spawn_jobs
     self.repositories.each do |repos|
