@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:arcturo/deposit.git
-  revision: 0f150deb114a6948f4b203ead0bff36e6a64f075
+  revision: e50be1d5556ba92088f083ae59d40b3ec3de7085
   specs:
     deposit (0.0.1)
       activerecord
@@ -44,6 +44,12 @@ GEM
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
+    capistrano (2.9.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     carrierwave (0.5.7)
       activesupport (~> 3.0)
     columnize (0.3.4)
@@ -57,6 +63,7 @@ GEM
       warden (~> 1.0.3)
     diff-lcs (1.1.3)
     erubis (2.7.0)
+    highline (1.6.2)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.14)
@@ -72,6 +79,14 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     multi_json (1.0.3)
+    mysql (2.8.1)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.2.1)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     orm_adapter (0.0.5)
     polyglot (0.3.2)
     rack (1.3.3)
@@ -151,11 +166,13 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  capistrano
   carrierwave
   delayed_job
   deposit!
   devise
   jquery-rails
+  mysql
   rails (= 3.1.0)
   rspec-rails
   ruby-debug19
