@@ -9,9 +9,12 @@ class DepositJob < Struct.new(:deposit_request_id, :repository)
 
     # Default to METS for now; later we'll add ways to specify
     # or infer other packaging schemes and other repositories.
-    tmp_file = Tempfile.new(['archive-', '.foo'], File.join(Rails.root, "tmp"))
-    tmp_name = tmp_file.path.gsub!(/.foo$/, "-#{rand(10101)}.zip")
-    m = Deposit::Packagers::Mets.new :sac_file_out => tmp_name
+    tmp_dir = File.join(Rails.root, "tmp")
+    tmp_file = Tempfile.new(['archive-', '.foo'], tmp_dir)
+    tmp_name = tmp_file.path.gsub(/.foo$/, "-#{rand(10101)}.zip")
+    m = Deposit::Packagers::Mets.new :sac_root_out => tmp_dir,
+                                     :sac_file_out => File.basename(tmp_name),
+                                     :sac_metadata_filename => File.join(tmp_dir, "mets.xml")
 
     ['title', 'abstract', 'status_statement', 'language', 'custodian', 'identifier', 'copyright_holder'].each do |attr|
       if val = dr.send(attr.to_sym)
