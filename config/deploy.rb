@@ -112,24 +112,12 @@ login: &login
   encoding: utf8
   username: #{db_user}
   password: #{db_pass}
-  database: #{application}_prod
-  pool: 20
+  database: #{application}_production
+  pool: 10
 
 production:
   <<: *login
-  host: 64.238.252.222
-
-staging:
-  <<: *login
-  reconnect: false
-  host: 64.238.252.222
-  socket: /tmp/mysql.sock
-
-remote:
-  <<: *login
-  reconnect: false
-  host: 64.238.252.222
-  socket: /tmp/mysql.sock
+  host: localhost
 
 delayed_job:
   <<: *login
