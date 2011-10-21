@@ -66,7 +66,7 @@ namespace :delayed_job do
 end
 
 def wait_for_process_to_end(process_name)
-  run "COUNT=1; until [ $COUNT -eq 0 ]; do COUNT=`ps -ef | grep -v 'ps -ef' | grep -v 'grep' | grep -i '#{process_nam    e}'|wc -l` ; echo 'waiting for #{process_name} to end' ; sleep 2 ; done"
+  run "COUNT=1; until [ $COUNT -eq 0 ]; do COUNT=`ps -ef | grep -v 'ps -ef' | grep -v 'grep' | grep -i '#{process_name}'|wc -l` ; echo 'waiting for #{process_name} to end' ; sleep 2 ; done"
 end
 
 after "deploy:update_code", "config:copy_shared_configurations"
